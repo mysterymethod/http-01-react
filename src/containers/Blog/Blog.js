@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Route, NavLink, Switch } from 'react-router-dom';
+import { Route, NavLink, Switch, Redirect } from 'react-router-dom';
  
 import './Blog.css';
 import Posts from './Posts/Posts';
@@ -17,7 +17,7 @@ class Blog extends Component {
                     <header>
                         <nav>
                             <ul>
-                                <li> <NavLink to="/" exact activeClassName="active">Home</NavLink> </li>
+                                <li> <NavLink to="/posts" exact activeClassName="active">Home</NavLink> </li>
                                 <li> <NavLink to="/new-post">New Post</NavLink></li>
                             </ul>
                         </nav>
@@ -31,21 +31,14 @@ class Blog extends Component {
 
                     <Switch>  //Please only load one route which matches first.
                         <Route 
-                            path="/"
-                            exact
-                            component={Posts}
-                        />
-
-                        <Route 
                             path="/new-post"
-                            exact
+                            
                             component={NewPost}
                         />
 
                         <Route 
-                            path="/:id"
-                            exact
-                            component={FullPost}
+                            path="/posts"
+                            component={Posts}
                         />
                     </Switch>
 
